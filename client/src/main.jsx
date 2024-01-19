@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       domain="dev-d6xknr6nxw2x0wvx.us.auth0.com"
       clientId="g3ZEhkYGMrrYJNxGznnSuOUEnggN7laN"
       authorizationParams={{
-        redirect_uri: "http://localhost:5173"
+        redirect_uri: "https://realestateproject-beta.vercel.app"
       }}
       audience='http://localhost:8000'
       scope='openid profile email'
