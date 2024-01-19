@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import useAuthCheck from '../hooks/useAuthCheck';
 
 export const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://realestateproject-beta.vercel.app/api",
 });
 export const getAllProperties = async() => {
   try {
