@@ -13,7 +13,7 @@ const PropertyCard = ({card}) => {
     >
       <AiFillHeart size = {24} color="white"/>
       {/* <Heart id={card?.id}/> */}
-      <img src={card.image} alt="home" />
+      <img src={card.image} alt="home" onError={e => {e.target.onerror=null; e.target.src='/r1.png';}} />
       <span className="secondaryText r-price">
         <span style={{ color: "orange" }}>$</span>
         <span>{card.price}</span>

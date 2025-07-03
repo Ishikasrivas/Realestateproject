@@ -74,7 +74,7 @@ const Property = () => {
         </div>
 
         {/* image */}
-        <img src={data?.image} alt="home image" />
+        <img src={data?.image} alt="home image" onError={e => {e.target.onerror=null; e.target.src='/r1.png';}} />
 
         <div className="flexCenter property-details">
           {/* left */}
