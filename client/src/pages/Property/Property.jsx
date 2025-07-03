@@ -1,22 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { useMutation, useQuery } from 'react-query'
-import { useLocation } from 'react-router-dom'
-import { getProperty, removeBooking } from '../../utils/api'
-import { PuffLoader } from 'react-spinners'
+import React, { useContext, useState } from "react";
+import { useMutation, useQuery } from "react-query";
+import { useLocation } from "react-router-dom";
+import { getProperty, removeBooking } from "../../utils/api";
+import { PuffLoader } from "react-spinners";
 // import { AiFillHeart } from 'react-icons/ai'
-import './Property.css'
+import "./Property.css";
 
-import { FaShower } from 'react-icons/fa'
-import { AiTwotoneCar } from 'react-icons/ai'
-import { MdLocationPin, MdMeetingRoom } from 'react-icons/md'
-import Map from '../../components/Map/Map'
-import useAuthCheck from '../../hooks/useAuthCheck'
-import { useAuth0 } from '@auth0/auth0-react'
-import BookingModal from '../../components/BookingModal/BookingModal'
-import UserDetailContext from '../../context/UserDetailContext'
-import { Button } from '@mantine/core'
-import { toast } from 'react-toastify'
-import Heart from '../../components/Heart/Heart'
+import { FaShower } from "react-icons/fa";
+import { AiTwotoneCar } from "react-icons/ai";
+import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
+import Map from "../../components/Map/Map";
+import useAuthCheck from "../../hooks/useAuthCheck";
+import { useAuth0 } from "@auth0/auth0-react";
+import BookingModal from "../../components/BookingModal/BookingModal";
+import UserDetailContext from "../../context/UserDetailContext";
+import { Button } from "@mantine/core";
+import { toast } from "react-toastify";
+import Heart from "../../components/Heart/Heart";
 const Property = () => {
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1)[0];
@@ -29,7 +29,7 @@ const Property = () => {
   const { user } = useAuth0();
 
   const {
-    userDetails: {  bookings },
+    userDetails: { bookings },
     setUserDetails,
   } = useContext(UserDetailContext);
 
@@ -70,11 +70,18 @@ const Property = () => {
       <div className="flexColStart paddings innerWidth property-container">
         {/* like button */}
         <div className="like">
-          <Heart id={id}/>
+          <Heart id={id} />
         </div>
 
         {/* image */}
-        <img src={data?.image} alt="home image" onError={e => {e.target.onerror=null; e.target.src='/r1.png';}} />
+        <img
+          src={data?.image || "/r1.png"}
+          alt="home image"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "/r1.png";
+          }}
+        />
 
         <div className="flexCenter property-details">
           {/* left */}
@@ -119,9 +126,7 @@ const Property = () => {
             <div className="flexStart" style={{ gap: "1rem" }}>
               <MdLocationPin size={25} />
               <span className="secondaryText">
-                {data?.address}{" "}
-                {data?.city}{" "}
-                {data?.country}
+                {data?.address} {data?.city} {data?.country}
               </span>
             </div>
 
@@ -141,7 +146,7 @@ const Property = () => {
                   Your visit already booked for date{" "}
                   {bookings?.filter((booking) => booking?.id === id)[0].date}
                 </span>
-              </> 
+              </>
             ) : (
               <button
                 className="button"
